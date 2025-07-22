@@ -19,6 +19,20 @@ export default tseslint.config([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    plugins: ["prettier"],
+    plugins: [
+      "react",
+      "react-refresh",
+      "react-hooks",
+      "jsx-a11y",
+      "prettier",
+      "import",
+    ],
+    rules: {
+      "react/no-unknown-property": ["error", { ignore: ["css"] }],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error",
+      "react/react-in-jsx-scope": "off",
+      "react-refresh/only-export-components": "off",
+    },
   },
 ]);
