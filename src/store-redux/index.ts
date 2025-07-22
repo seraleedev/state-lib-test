@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { counterSlice } from "./slices/counterSlice";
-import { userSlice } from "./slices/userSlice";
+import rootReducer from "./slices";
 
 export const reduxStore = configureStore({
-  reducer: { counter: counterSlice.reducer, user: userSlice.reducer },
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof reduxStore.getState>;
