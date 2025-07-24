@@ -1,8 +1,7 @@
 import { Card, Input, InputNumber, Select, Space } from "antd";
 import Title from "antd/es/typography/Title";
-import { type ISelectOption } from "../store-redux/slices/userSlice";
 import type { LabeledValue } from "antd/es/select";
-import { titleStyle } from "../config";
+import { titleStyle, type ISelectOption } from "../config";
 import { useMemo } from "react";
 import { createOptions } from "../util";
 import type { valueType } from "antd/es/statistic/utils";
@@ -30,16 +29,16 @@ export const Tab = ({ tabName, states, actions }: ITab) => {
         {tabName}
       </Title>
       <Card size="small" title="실제 값">
-        <p>counter : {states.count}</p>
-        <p>name : {states.name}</p>
-        <p>
+        <div>counter : {states.count}</div>
+        <div>name : {states.name}</div>
+        <div>
           selected :{" "}
           <ul>
             {states.selected.map((option) => (
               <li>{option.value}</li>
             ))}
           </ul>
-        </p>
+        </div>
       </Card>
       <InputNumber
         value={states.count}

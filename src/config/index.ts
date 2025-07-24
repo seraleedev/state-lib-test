@@ -11,5 +11,26 @@ export const menuItem: MenuItem[] = [
   { label: "Jotai", key: "jotai" },
 ];
 
-// export const options = useMemo(() => createOptions(), []);
 export const titleStyle = { margin: 0 };
+
+export interface ISelectOption {
+  label: string;
+  value: string;
+}
+export interface UserState {
+  name: string;
+  selected: ISelectOption[];
+}
+
+export const initialUser: UserState = {
+  name: "",
+  selected: [],
+};
+
+export interface CounterState {
+  value: number;
+}
+
+export const initialCount: CounterState = {
+  value: 0,
+};

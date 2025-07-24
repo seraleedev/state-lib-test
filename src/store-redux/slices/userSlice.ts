@@ -1,19 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-
-export interface ISelectOption {
-  label: string;
-  value: string;
-}
-export interface UserState {
-  name: string;
-  selected: ISelectOption[];
-}
-
-const initialUser: UserState = {
-  name: "",
-  selected: [],
-};
+import { initialUser, type ISelectOption } from "../../config";
 
 export const userSlice = createSlice({
   name: "user",
