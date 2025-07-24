@@ -1,26 +1,27 @@
 import { Tab } from "../Tab";
-import { useAppSelector, useAppDispatch } from "../../store-redux/hooks";
-import { editCount } from "../../store-redux/slices/counterSlice";
 import type { InputNumberProps } from "antd";
-import { editName, editSelected } from "../../store-redux/slices/userSlice";
 import type { LabeledValue } from "antd/es/select";
+import useZustandStore from "../../store-zustand/useStore";
 
 export const ZustandTab = () => {
-  // redux
-  const reduxCount = useAppSelector((state) => state.counter.value);
-  const { name: reduxName, selected: reduxSelected } = useAppSelector(
-    (state) => state.user
+  // zustand
+  const zustandCount = useZustandStore((state) => state.count);
+  const { name: zustandName, selected: zustandSelected } = useZustandStore(
+    (state) => state.data
   );
-  const dispatch = useAppDispatch();
+  const { editCount } = useZustandStore((state) => state.counterActions);
+  const { editName, editSelected } = useZustandStore(
+    (state) => state.userActions
+  );
 
   const onChangeCount: InputNumberProps["onChange"] = (value) => {
     // console.log("count changed", value);
-    dispatch(editCount(value));
+    editCount(value);
   };
 
   const onChangeName = (value: string) => {
-    // console.log("name changed", value);
-    dispatch(editName(value));
+    console.log("name changed", value);
+    editName(value);
   };
 
   const onChangeSelect = (values: LabeledValue[]) => {
@@ -29,13 +30,17 @@ export const ZustandTab = () => {
       label: item.label?.toString() || "",
       value: item.value?.toString(),
     }));
-    dispatch(editSelected(newDatas));
+    editSelected(newDatas);
   };
 
   return (
     <Tab
       tabName="Zustand"
-      states={{ count: reduxCount, name: reduxName, selected: reduxSelected }}
+      states={{
+        count: zustandCount,
+        name: zustandName,
+        selected: zustandSelected,
+      }}
       actions={{
         changeName: onChangeName,
         changeCount: onChangeCount,

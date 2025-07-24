@@ -35,7 +35,7 @@ export const Tab = ({ tabName, states, actions }: ITab) => {
           selected :{" "}
           <ul>
             {states.selected.map((option) => (
-              <li>{option.value}</li>
+              <li key={option.value}>{option.value}</li>
             ))}
           </ul>
         </div>
@@ -44,7 +44,8 @@ export const Tab = ({ tabName, states, actions }: ITab) => {
         value={states.count}
         addonBefore={`counter`}
         onChange={actions.changeCount}
-        max={100}
+        max={1000}
+        min={0}
       />
       <Input
         value={states.name}
@@ -55,6 +56,7 @@ export const Tab = ({ tabName, states, actions }: ITab) => {
         mode="multiple"
         allowClear
         labelInValue
+        value={states.selected}
         onChange={actions.changeSelect}
         style={{ width: "100%" }}
         placeholder="Please select"

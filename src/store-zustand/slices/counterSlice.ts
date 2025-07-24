@@ -15,11 +15,11 @@ export const useCounterSlice = (set: any, get: any): ICounterStore => ({
   counterActions: {
     getCount: () => get(),
     editCount: (value) => {
-      set((state: any) => {
-        console.log(state);
-        if (value == "") return;
-        state.count = Number(value);
-      });
+      if (value == "") return;
+      set((state: ICounterStore) => ({
+        ...state,
+        count: Number(value),
+      }));
     },
   },
 });

@@ -16,10 +16,30 @@ export const useUserSlice = (set: any, get: any): IUserStore => ({
   userActions: {
     getData: () => get(),
     editName: (value) => {
-      set((state: UserState) => (state.name = value));
+      set((state: IUserStore) => {
+        const edited = {
+          ...state,
+          data: {
+            ...state.data,
+            name: value,
+          },
+        };
+
+        return edited;
+      });
     },
     editSelected: (values) => {
-      set((state: UserState) => (state.selected = values));
+      set((state: IUserStore) => {
+        const edited = {
+          ...state,
+          data: {
+            ...state.data,
+            selected: values,
+          },
+        };
+
+        return edited;
+      });
     },
   },
 });

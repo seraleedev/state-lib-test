@@ -4,7 +4,9 @@ import { useCounterSlice, type ICounterStore } from "./slices/counterSlice";
 
 type IStore = IUserStore & ICounterStore;
 
-export const zustandStore = create<IStore>((set, get) => ({
+export const useZustandStore = create<IStore>((set, get) => ({
   ...useUserSlice(set, get),
   ...useCounterSlice(set, get),
 }));
+
+export default useZustandStore;
