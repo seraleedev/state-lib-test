@@ -1,7 +1,7 @@
 import { Tab } from "../Tab";
 import type { InputNumberProps } from "antd";
 import type { LabeledValue } from "antd/es/select";
-import useZustandStore from "../../store-zustand/useStore";
+import useZustandStore from "../../zustand/useStore";
 
 export const ZustandTab = () => {
   // zustand

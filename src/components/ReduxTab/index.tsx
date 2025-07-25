@@ -1,8 +1,8 @@
 import { Tab } from "../Tab";
-import { useAppSelector, useAppDispatch } from "../../store-redux/hooks";
-import { editCount } from "../../store-redux/slices/counterSlice";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { editCount } from "../../redux/slices/counterSlice";
 import type { InputNumberProps } from "antd";
-import { editName, editSelected } from "../../store-redux/slices/userSlice";
+import { editName, editSelected } from "../../redux/slices/userSlice";
 import type { LabeledValue } from "antd/es/select";
 
 export const ReduxTab = () => {

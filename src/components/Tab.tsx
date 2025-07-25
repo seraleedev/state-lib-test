@@ -2,7 +2,7 @@ import { Card, Input, InputNumber, Select, Space } from "antd";
 import Title from "antd/es/typography/Title";
 import type { LabeledValue } from "antd/es/select";
 import { titleStyle, type ISelectOption } from "../config";
-import { useMemo } from "react";
+import { useMemo, type ReactNode } from "react";
 import { createOptions } from "../util";
 import type { valueType } from "antd/es/statistic/utils";
 
@@ -18,9 +18,10 @@ export interface ITab {
     changeName: (value: string) => void;
     changeSelect: (values: LabeledValue[]) => void;
   };
+  children?: ReactNode;
 }
 
-export const Tab = ({ tabName, states, actions }: ITab) => {
+export const Tab = ({ tabName, states, actions, children }: ITab) => {
   const options = useMemo(() => createOptions(), []);
 
   return (
@@ -40,6 +41,7 @@ export const Tab = ({ tabName, states, actions }: ITab) => {
           </ul>
         </div>
       </Card>
+      {children}
       <InputNumber
         value={states.count}
         addonBefore={`counter`}

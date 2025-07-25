@@ -1,6 +1,4 @@
 import type { MenuProps } from "antd";
-import { useMemo } from "react";
-import { createOptions } from "../util";
 
 type MenuItem = Required<MenuProps>["items"][number];
 

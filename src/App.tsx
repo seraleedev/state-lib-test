@@ -4,6 +4,7 @@ import { useState } from "react";
 import CustomMenu from "./components/Menu";
 import ReduxTab from "./components/ReduxTab";
 import ZustandTab from "./components/ZustandTab";
+import RecoilTab from "./components/RecoilTab";
 
 function App() {
   const [currentTab, setCurrentTab] = useState<string>("redux");
@@ -17,6 +18,7 @@ function App() {
         >
           {currentTab == "redux" && <ReduxTab />}
           {currentTab == "zustand" && <ZustandTab />}
+          {currentTab == "recoil" && <RecoilTab />}
         </Layout>
       </Content>
     </Layout>

@@ -1,4 +1,5 @@
 import { type valueType } from "antd/es/statistic/utils";
+import { initialCount } from "../../config";
 
 export interface ICounterStore {
   count: number;
@@ -11,7 +12,7 @@ interface ICounterAction {
 }
 
 export const useCounterSlice = (set: any, get: any): ICounterStore => ({
-  count: 0,
+  count: initialCount.value,
   counterActions: {
     getCount: () => get(),
     editCount: (value) => {
