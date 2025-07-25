@@ -5,6 +5,7 @@ import CustomMenu from "./components/Menu";
 import ReduxTab from "./components/ReduxTab";
 import ZustandTab from "./components/ZustandTab";
 import RecoilTab from "./components/RecoilTab";
+import JotaiTab from "./components/JotaiTab";
 
 function App() {
   const [currentTab, setCurrentTab] = useState<string>("redux");
@@ -19,6 +20,7 @@ function App() {
           {currentTab == "redux" && <ReduxTab />}
           {currentTab == "zustand" && <ZustandTab />}
           {currentTab == "recoil" && <RecoilTab />}
+          {currentTab == "jotai" && <JotaiTab />}
         </Layout>
       </Content>
     </Layout>
