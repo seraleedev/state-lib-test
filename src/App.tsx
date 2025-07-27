@@ -6,6 +6,7 @@ import ReduxTab from "./components/ReduxTab";
 import ZustandTab from "./components/ZustandTab";
 import RecoilTab from "./components/RecoilTab";
 import JotaiTab from "./components/JotaiTab";
+import MobXTab from "./components/MobXTab";
 
 function App() {
   const [currentTab, setCurrentTab] = useState<string>("redux");
@@ -21,6 +22,7 @@ function App() {
           {currentTab == "zustand" && <ZustandTab />}
           {currentTab == "recoil" && <RecoilTab />}
           {currentTab == "jotai" && <JotaiTab />}
+          {currentTab == "mobx" && <MobXTab />}
         </Layout>
       </Content>
     </Layout>

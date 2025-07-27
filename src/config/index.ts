@@ -7,6 +7,7 @@ export const menuItem: MenuItem[] = [
   { label: "Zustand", key: "zustand" },
   { label: "Recoil", key: "recoil" },
   { label: "Jotai", key: "jotai" },
+  { label: "MobX", key: "mobx" },
 ];
 
 export const titleStyle = { margin: 0 };
