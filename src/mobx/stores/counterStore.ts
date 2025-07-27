@@ -1,16 +1,15 @@
 import { makeAutoObservable } from "mobx";
-import { initialCount } from "../../config";
 import type { valueType } from "antd/es/statistic/utils";
+import { initialCount } from "../../config";
 
 export class CounterStore {
-  count: number = initialCount.value;
+  count = initialCount.value;
 
   constructor() {
     makeAutoObservable(this);
   }
 
   editCount(value: valueType | null) {
-    if (value == "") return;
-    this.count == Number(value);
+    this.count = Number(value);
   }
 }

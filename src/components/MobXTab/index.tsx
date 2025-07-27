@@ -1,26 +1,24 @@
 import { Tab } from "../Tab";
 import type { InputNumberProps } from "antd";
-import type { LabeledValue } from "antd/es/select";
 import Paragraph from "antd/es/typography/Paragraph";
-import { useAtom } from "jotai";
-import { CounterJotaiAtom, selectedLength, UserJotaiAtom } from "../../jotai";
-import { useAtomValue } from "jotai";
+import type { LabeledValue } from "antd/es/select";
+import { observer } from "mobx-react-lite";
+import { useMobxCounter, useMobxUser } from "../../mobx/hook/useStore";
 
-export const MobXTab = () => {
+export const MobXTab = observer(() => {
   // mobx
-  const [jotaiCount, setJotaiCount] = useAtom(CounterJotaiAtom);
-  const [jotaiUser, setJotaiUser] = useAtom(UserJotaiAtom);
-  const selectedLengthJotai = useAtomValue(selectedLength);
-
+  const counterStore = useMobxCounter();
+  const userStore = useMobxUser();
+  const selectedLength = userStore.getSelectedLength;
   const onChangeCount: InputNumberProps["onChange"] = (value) => {
     // console.log("count changed", value);
     if (value == "") return;
-    setJotaiCount(Number(value));
+    counterStore.editCount(value);
   };
 
   const onChangeName = (value: string) => {
     // console.log("name changed", value);
-    setJotaiUser({ ...jotaiUser, name: value });
+    userStore.editName(value);
   };
 
   const onChangeSelect = (values: LabeledValue[]) => {
@@ -29,16 +27,16 @@ export const MobXTab = () => {
       label: item.label?.toString() || "",
       value: item.value?.toString(),
     }));
-    setJotaiUser({ ...jotaiUser, selected: newDatas });
+    userStore.editSelected(newDatas);
   };
 
   return (
     <Tab
-      tabName="Jotai"
+      tabName="mobX"
       states={{
-        count: jotaiCount,
-        name: jotaiUser.name,
-        selected: jotaiUser.selected,
+        count: counterStore.count,
+        name: userStore.data.name,
+        selected: userStore.data.selected,
       }}
       actions={{
         changeName: onChangeName,
@@ -46,9 +44,8 @@ export const MobXTab = () => {
         changeSelect: onChangeSelect,
       }}
     >
-      <Paragraph>선택 개수: {selectedLengthJotai}</Paragraph>
+      <Paragraph>선택 개수: {selectedLength}</Paragraph>
     </Tab>
   );
-};
-
+});
 export default MobXTab;
