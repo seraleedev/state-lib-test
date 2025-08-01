@@ -20,7 +20,7 @@ export const ZustandTab = () => {
   };
 
   const onChangeName = (value: string) => {
-    console.log("name changed", value);
+    //console.log("name changed", value);
     editName(value);
   };
 

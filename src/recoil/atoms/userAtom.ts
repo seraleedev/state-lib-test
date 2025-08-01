@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { initialUser } from "../../config";
+import { initialUser, type UserState } from "../../config";
 
-export const UserAtom = atom({
+export const UserAtom = atom<UserState>({
   key: "userAtom",
   default: initialUser,
 });

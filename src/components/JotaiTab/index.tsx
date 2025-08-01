@@ -2,9 +2,8 @@ import { Tab } from "../Tab";
 import type { InputNumberProps } from "antd";
 import type { LabeledValue } from "antd/es/select";
 import Paragraph from "antd/es/typography/Paragraph";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { CounterJotaiAtom, selectedLength, UserJotaiAtom } from "../../jotai";
-import { useAtomValue } from "jotai";
 
 export const JotaiTab = () => {
   // jotai
