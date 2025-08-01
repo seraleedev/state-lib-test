@@ -5,7 +5,6 @@ import { titleStyle, type ISelectOption } from "../config";
 import { useMemo, type ReactNode } from "react";
 import { createOptions } from "../util";
 import type { valueType } from "antd/es/statistic/utils";
-import { observer } from "mobx-react-lite";
 
 export interface ITab {
   tabName: string;
@@ -21,8 +20,8 @@ export interface ITab {
   };
   children?: ReactNode;
 }
-// mobx 사용하기 위해 observer 코드로 한번 더 감쌈
-export const Tab = observer(({ tabName, states, actions, children }: ITab) => {
+
+export const Tab = ({ tabName, states, actions, children }: ITab) => {
   const options = useMemo(() => createOptions(), []);
 
   return (
@@ -67,4 +66,4 @@ export const Tab = observer(({ tabName, states, actions, children }: ITab) => {
       />
     </Space>
   );
-});
+};
